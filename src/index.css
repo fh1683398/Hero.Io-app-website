@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+body {
+    background-color: #F5F5F5;
+    font-family: "Inter", sans-serif;
+}
+
+:root {
+    --primary-color: #001931;
+}
+
+a.active {
+    display: inline-block;
+    background-image: linear-gradient(to right, #632EE3, #9F62F2);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    text-decoration: underline;
+}
