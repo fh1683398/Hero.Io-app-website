@@ -3,6 +3,7 @@ import { IoLogoGithub } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { NavLink } from 'react-router';
+import logo from "../../assets/logo.png"
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false)
@@ -14,7 +15,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className="bg-white sticky top-0 z-50">
+        <nav className="bg-white sticky top-0 z-50 px-4 md:px-0">
 
             {/* mobile menus */}
             {
@@ -41,6 +42,7 @@ const Navbar = () => {
                 )
             }
 
+            {/* desktop */}
             <div className='flex justify-between items-center max-w-360 mx-auto py-5'>
 
                 <div className='flex gap-2 cursor-pointer items-center'>
@@ -50,10 +52,14 @@ const Navbar = () => {
                         onClick={() => setOpenMenu(!openMenu)}>{openMenu ? <IoMdClose size={25}/> : <FiMenu size={25}/>}
                     </button>
 
-                    <h3
+                    <div className='flex gap-2 items-center'>
+                        <img className='w-10' src={logo} alt="" />
+
+                        <h3
                         className='font-bold text-2xl md:text-3xl text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-violet-500'>
                         Hero.Io
                     </h3>
+                    </div>
                 </div>
 
                 <ul
@@ -63,7 +69,7 @@ const Navbar = () => {
 
                 <a href="https://github.com/fh1683398" target="_blank">
                     <button
-                    className='flex items-center justify-center text-white gap-2 bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer'><IoLogoGithub /> Contribute
+                    className='flex items-center justify-center  gap-2 text-white bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer'><IoLogoGithub /> <span className='hidden md:inline'>Contribute</span>
                 </button>
                 </a>
             </div>
