@@ -4,8 +4,9 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Root from "./components/Root/Root.jsx"
 import Home from "./components/Home/Home.jsx"
-import Apps from './components/Apps/Apps.jsx'
 import Installation from './components/Installation/Installation.jsx'
+import AllApps from './components/All Apps/AllApps.jsx'
+import AppDetails from './components/All Apps/AppDetails.jsx'
 
 
 const router = createBrowserRouter([
@@ -18,7 +19,15 @@ const router = createBrowserRouter([
         loader: () => fetch("/app_data.json"),
         Component: Home
       },
-      { path: "apps", Component: Apps },
+      { 
+        path: "/apps", 
+        loader: () => fetch("/app_data.json"),
+        Component: AllApps 
+      },
+      {
+        path: "/apps/:id",
+        Component: AppDetails
+      },
       { path: "installation", Component: Installation }
     ]
   }

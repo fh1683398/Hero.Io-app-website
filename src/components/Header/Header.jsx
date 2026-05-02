@@ -11,7 +11,7 @@ const Header = () => {
             </h1>
             <p className='text-gray-500 max-w-250 mx-auto mb-10'>At HERO.IO , we craft innovative apps designed to make everyday life simpler, smarter, and more exciting. Our goal is to turn your ideas into digital experiences that truly make an impact.</p>
             
-            <div className='flex gap-4 justify-center mb-10'>
+            <div className='flex flex-col md:flex-row gap-4 justify-center mb-10'>
 
                 <button className='flex items-center justify-center gap-4 px-6 py-3 border border-gray-300 hover:bg-gray-200 rounded-sm cursor-pointer'>
 
