@@ -11,17 +11,19 @@ const Footer = () => {
 
             <div className='flex flex-col gap-12 md:gap-0 md:flex-row items-center justify-between max-w-360 mx-auto pb-10 border-b border-gray-300'>
 
-                <div className='flex gap-4 items-center justify-center'>
-                    <img className='w-10' src={logoImg} alt="" />
-                    <h4 className='text-white text-2xl md:text-3xl font-bold'>Hero.Io</h4>
-                </div>
+                <Link to="/">
+                    <button className='flex gap-4 items-center justify-center cursor-pointer'>
+                        <img className='w-10' src={logoImg} alt="" />
+                        <h4 className='text-white text-2xl md:text-3xl font-bold'>Hero.Io</h4>
+                    </button>
+                </Link>
 
                 <div className='text-white text-center md:text-right'>
                     <h4 className='mb-4 font-semibold text-xl'>Social Links</h4>
                     <div className='flex justify-between gap-4'>
-                        <Link to="/"><FaXTwitter  size={20}/></Link>
-                        <Link to="/"><FaLinkedinIn size={20}/></Link>
-                        <Link to="/"><FaFacebookF  size={20}/></Link>
+                        <Link to="/"><FaXTwitter size={20} /></Link>
+                        <Link to="/"><FaLinkedinIn size={20} /></Link>
+                        <Link to="/"><FaFacebookF size={20} /></Link>
                     </div>
                 </div>
             </div>

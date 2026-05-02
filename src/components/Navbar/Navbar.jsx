@@ -14,7 +14,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className="bg-white">
+        <nav className="bg-white sticky top-0 z-50">
 
             {/* mobile menus */}
             {
@@ -61,9 +61,11 @@ const Navbar = () => {
                     {links}
                 </ul>
 
-                <button
+                <a href="https://github.com/fh1683398" target="_blank">
+                    <button
                     className='flex items-center justify-center text-white gap-2 bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer'><IoLogoGithub /> Contribute
                 </button>
+                </a>
             </div>
         </nav>
     );
