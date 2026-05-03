@@ -31,7 +31,9 @@ const router = createBrowserRouter([
         loader: () => fetch("/app_data.json"),
         Component: AppDetails
       },
-      { path: "installation", Component: Installation }
+      { path: "installation", 
+        loader: () => fetch("/app_data.json"),
+        Component: Installation }
     ]
   }
 ])

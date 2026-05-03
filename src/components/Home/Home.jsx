@@ -13,7 +13,6 @@ const Home = () => {
             <Header></Header>
             <Statics></Statics>
             <TrendingApps appsData={appsData}></TrendingApps>
-            <Footer></Footer>
         </div>
     );
 };

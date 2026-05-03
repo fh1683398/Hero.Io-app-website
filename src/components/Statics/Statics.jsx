@@ -4,7 +4,7 @@ const Statics = () => {
     return (
         <div className='bg-linear-to-r from-violet-600 to-violet-500 py-10 md:py-20'>
 
-            <div className='text-center max-w-[1440px] mx-auto'>
+            <div className='text-center max-w-360 mx-auto'>
 
                 <h2 className='text-3xl md:text-4xl font-bold text-white mb-10'>Trusted By Millions, Built For You</h2>
 

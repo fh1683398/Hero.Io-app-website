@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IoLogoGithub } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import logo from "../../assets/logo.png"
 
 const Navbar = () => {
@@ -31,7 +31,7 @@ const Navbar = () => {
                             <button
                                 className='cursor-pointer'
                                 onClick={() => setOpenMenu(!openMenu)}>
-                                <IoMdClose size={25}/>
+                                <IoMdClose size={25} />
                             </button>
 
                             <ul className='flex flex-col space-y-2' onClick={() => setOpenMenu(!openMenu)}>
@@ -49,17 +49,19 @@ const Navbar = () => {
 
                     <button
                         className='lg:hidden cursor-pointer'
-                        onClick={() => setOpenMenu(!openMenu)}>{openMenu ? <IoMdClose size={25}/> : <FiMenu size={25}/>}
+                        onClick={() => setOpenMenu(!openMenu)}>{openMenu ? <IoMdClose size={25} /> : <FiMenu size={25} />}
                     </button>
 
-                    <div className='flex gap-2 items-center'>
-                        <img className='w-10' src={logo} alt="" />
+                    <Link to="/">
+                        <div className='flex gap-2 items-center'>
+                            <img className='w-10' src={logo} alt="" />
 
-                        <h3
-                        className='font-bold text-2xl md:text-3xl text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-violet-500'>
-                        Hero.Io
-                    </h3>
-                    </div>
+                            <h3
+                                className='font-bold text-2xl md:text-3xl text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-violet-500'>
+                                Hero.Io
+                            </h3>
+                        </div>
+                    </Link>
                 </div>
 
                 <ul
@@ -69,8 +71,8 @@ const Navbar = () => {
 
                 <a href="https://github.com/fh1683398" target="_blank">
                     <button
-                    className='flex items-center justify-center  gap-2 text-white bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer'><IoLogoGithub /> <span className='hidden md:inline'>Contribute</span>
-                </button>
+                        className='flex items-center justify-center  gap-2 text-white bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer'><IoLogoGithub /> <span className='hidden md:inline'>Contribute</span>
+                    </button>
                 </a>
             </div>
         </nav>

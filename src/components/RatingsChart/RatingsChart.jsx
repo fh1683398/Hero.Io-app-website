@@ -8,7 +8,7 @@ const RatingsChart = ({ appData }) => {
     // console.log(sortedRatings)
 
     return (
-        <div className='w-full h-75 scale-90 md:scale-100'>
+        <div className='w-full h-75 scale-90 md:scale-100 mb-10 md:mb-30'>
             <h2 className='mb-4 font-semibold'>Ratings</h2>
 
             <ResponsiveContainer width="100%" height="100%">

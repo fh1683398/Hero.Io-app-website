@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import downloadImg from "../../assets/icon-downloads.png";
 import starImg from "../../assets/icon-ratings.png";
 import likeImg from "../../assets/icon-review.png"
 import RatingsChart from '../RatingsChart/RatingsChart';
+import { getItemFromLocalStorage, setItemToLocalStorage } from '../LocalStorage/_localStorage';
 
 const AppDetails = () => {
     const allApps = useLoaderData()
-    const {id} = useParams()
-    
-    const appData = allApps.find(a=> a.id === parseInt(id)) 
-    
+    const { id } = useParams()
+    const [installed, setInstalled] = useState(()=> {
+        const installedApps = getItemFromLocalStorage();
+        return installedApps.includes(id)
+    })
+
+    const appData = allApps.find(a => a.id === parseInt(id))
+
     const { image, title, companyName, downloads, ratingAvg, reviews, size } = appData;
 
     const formatDownloads = (num) => {
@@ -28,11 +33,16 @@ const AppDetails = () => {
         }
     };
 
+    const handleInstallNow = () => {
+        setItemToLocalStorage(id)
+        setInstalled(true)
+    }
+
 
     return (
         <div className='max-w-360 mx-auto'>
             <div className='my-10 md:my-20 flex gap-6 lg:gap-10 flex-col md:flex-row px-4 lg:px-0'>
-                
+
                 {/* image */}
                 <div className='bg-white rounded-lg flex items-center justify-center'>
                     <img className='max-w-90 w-full h-full object-cover' src={image} alt={title} />
@@ -63,7 +73,12 @@ const AppDetails = () => {
                             <h3 className='font-extrabold text-3xl md:text-4xl text-(--primary-color)'>{formatDownloads(reviews)}</h3>
                         </div>
                     </div>
-                    <button className='text-white bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer font-semibold'>Install Now ({size})</button>
+                    <button
+                        onClick={()=>handleInstallNow(id)}
+                        disabled={installed}
+                        className='text-white bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed disabled: opacity-70'
+                        >{installed ? "Installed": "Install Now"} ({size})
+                    </button>
                 </div>
             </div>
 

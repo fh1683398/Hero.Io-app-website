@@ -8,7 +8,7 @@ const AllApps = () => {
     return (
         <div className='max-w-360 mx-auto'>
 
-            <div className='text-center mt-10 md:mt-20 mb-10'>
+            <div className='text-center mt-10 md:mt-20 pb-10'>
 
                 <h2 className='text-4xl md:text-5xl mb-4 font-bold text-(--primary-color)'>Our All Applications</h2>
                 <p className='text-gray-500 text-xl'>Explore All Apps on the Market developed by us. We code for Millions</p>
@@ -24,7 +24,7 @@ const AllApps = () => {
                     <input className='pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full' type="text" placeholder='search Apps' />
                 </div>
             </div>
-            <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:items-stretch'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:items-stretch mb-10 md:mb-20'>
                 {
                     allApps.map(app => <SingleApp app={app}></SingleApp>)
                 }
