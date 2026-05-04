@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import SingleApp from './SingleApp';
 import { IoIosSearch } from "react-icons/io";
+import NoAppFoundImg from "../../assets/App-Error.png"
 
 const AllApps = () => {
     const allApps = useLoaderData()
@@ -28,7 +29,7 @@ const AllApps = () => {
                     <button className='absolute left-3 text-gray-500 cursor-pointer'><IoIosSearch size={20} /></button>
 
                     <input
-                        className='pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full'
+                        className='pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full text-gray-700 font-inter'
                         type="text"
                         placeholder='search Apps'
                         onChange={(e) => setSearch(e.target.value)}
@@ -44,7 +45,9 @@ const AllApps = () => {
 
             {/* if no results found after search */}
             {filteredApps.length === 0 && (
-                <p>NO apps found</p>
+                <div className='flex items-center justify-center my-10 md:mb-20'>
+                    <img className='' src={NoAppFoundImg} alt="" />
+                </div>
             )}
         </div>
     );

@@ -5,6 +5,9 @@ body {
     background-color: #F5F5F5;
     font-family: "Inter", sans-serif;
 }
+.font-inter{
+    font-family: "Inter", sans-serif;
+}
 
 :root {
     --primary-color: #001931;
