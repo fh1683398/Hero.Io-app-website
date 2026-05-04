@@ -5,11 +5,12 @@ import starImg from "../../assets/icon-ratings.png";
 import likeImg from "../../assets/icon-review.png"
 import RatingsChart from '../RatingsChart/RatingsChart';
 import { getItemFromLocalStorage, setItemToLocalStorage } from '../LocalStorage/_localStorage';
+import Swal from "sweetalert2";
 
 const AppDetails = () => {
     const allApps = useLoaderData()
     const { id } = useParams()
-    const [installed, setInstalled] = useState(()=> {
+    const [installed, setInstalled] = useState(() => {
         const installedApps = getItemFromLocalStorage();
         return installedApps.includes(id)
     })
@@ -34,9 +35,25 @@ const AppDetails = () => {
     };
 
     const handleInstallNow = () => {
-        setItemToLocalStorage(id)
-        setInstalled(true)
-    }
+        if (installed) {
+            Swal.fire({
+                icon: "warning",
+                title: "Already Installed",
+                text: `${title} is already installed.`,
+            });
+            return;
+        }
+
+        setItemToLocalStorage(id);
+        setInstalled(true);
+
+        Swal.fire({
+            icon: "success",
+            title: "Installed!",
+            text: `${title} installed successfully.`,
+            confirmButtonColor: "#7c3aed"
+        });
+    };
 
 
     return (
@@ -74,10 +91,10 @@ const AppDetails = () => {
                         </div>
                     </div>
                     <button
-                        onClick={()=>handleInstallNow(id)}
+                        onClick={() => handleInstallNow(id)}
                         disabled={installed}
                         className='text-white bg-linear-to-r from-violet-600 to-violet-500 px-5 py-2 rounded-sm text-lg cursor-pointer font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed disabled: opacity-70'
-                        >{installed ? "Installed": "Install Now"} ({size})
+                    >{installed ? "Installed" : "Install Now"} ({size})
                     </button>
                 </div>
             </div>
