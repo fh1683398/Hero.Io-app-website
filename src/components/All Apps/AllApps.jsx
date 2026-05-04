@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import SingleApp from './SingleApp';
 import { IoIosSearch } from "react-icons/io";
 
 const AllApps = () => {
     const allApps = useLoaderData()
+    const [search, setSearch] = useState("")
+
+    const filteredApps = allApps.filter(app =>
+        app.title.toLowerCase().includes(search.toLowerCase())
+    )
+
     return (
         <div className='max-w-360 mx-auto'>
 
@@ -15,20 +21,31 @@ const AllApps = () => {
             </div>
 
             <div className='flex flex-col md:flex-row md:gap-5 justify-between mb-10'>
-                <h4 className='font-semibold text-2xl text-center md:text-left'>(132) Apps Found</h4>
+                <h4 className='font-semibold text-2xl text-center md:text-left'>({filteredApps.length}) Apps Found</h4>
 
                 <div className='relative flex items-center justify-center'>
 
-                    <button className='absolute left-3 text-gray-500 cursor-pointer'><IoIosSearch size={20}/></button>
+                    <button className='absolute left-3 text-gray-500 cursor-pointer'><IoIosSearch size={20} /></button>
 
-                    <input className='pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full' type="text" placeholder='search Apps' />
+                    <input
+                        className='pl-10 pr-4 py-2 border border-gray-300 rounded-md w-full'
+                        type="text"
+                        placeholder='search Apps'
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
                 </div>
             </div>
+
             <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:items-stretch mb-10 md:mb-20'>
                 {
-                    allApps.map(app => <SingleApp app={app}></SingleApp>)
+                    (search ? filteredApps : allApps).map(app => <SingleApp app={app}></SingleApp>)
                 }
             </div>
+
+            {/* if no results found after search */}
+            {filteredApps.length === 0 && (
+                <p>NO apps found</p>
+            )}
         </div>
     );
 };
